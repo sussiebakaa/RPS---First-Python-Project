@@ -8,7 +8,7 @@ cap.set(4, 480)
 print("Camera opened:", cap.isOpened())
 
 human_w, human_h = 358, 365
-x, y = 793, 309   # from UI design (CORRECT)
+x, y = 793, 309  
 
 while True:
     imgBG = cv2.imread("assets/bg2.jpg")
@@ -19,9 +19,8 @@ while True:
     img = cv2.flip(img, 1)
 
     imgScaled = cv2.resize(img, (human_w, human_h))
-    imgScaled = imgScaled[:, 50:human_w]   # crop left 50px
+    imgScaled = imgScaled[:, 50:human_w]   
 
-    # ✅ FIX: DO NOT offset x again
     imgBG[y:y+human_h, x:x+imgScaled.shape[1]] = imgScaled
 
     cv2.imshow("Image", img)
